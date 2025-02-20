@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest # Official Audiobookshelf Docker image
+    container_name: audiobookshelf
+    ports:
+      - "13378:80" # Map the container's port 80 to host port 13378
+    volumes:
+      - ./config:/config # Persistent storage for app configuration
+      - ./audiobooks:/audiobooks # Persistent storage for your audiobooks
+      - ./podcasts:/podcasts # Persistent storage for your podcasts
+    restart: unless-stopped
